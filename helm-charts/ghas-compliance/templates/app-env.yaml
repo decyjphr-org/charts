@@ -7,8 +7,8 @@ data:
   {{- required "A valid appEnv is required!" .Values.appEnv }}
   {{- required "A valid appEnv.APP_ID is required!" .Values.appEnv.APP_ID }}
   {{- required "A valid appEnv.PRIVATE_KEY is required!" .Values.appEnv.PRIVATE_KEY }}
-  {{   if .Values.appEnv }}
-  {{     range $key, $value := .Values.appEnv }}
+  {{-   if .Values.appEnv }}
+  {{-     range $key, $value := .Values.appEnv }}
   {{       $key }}: {{ $value | b64enc }}
-  {{     end }}
-  {{   end }}
+  {{-     end }}
+  {{-   end }}
