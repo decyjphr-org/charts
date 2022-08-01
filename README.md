@@ -18,6 +18,16 @@ You can then run `helm show values decyjphr/ghas-compliance` to see the values.
 
 Chart documentation is available in [decyjphr directory](https://github.com/decyjphr-org/ghas-compliance/).
 
+Passing custom values for APP_ID, PRIVATE_KEY, WEBHOOK_SECRET using `--values` (Preferred approach)
+```bash
+helm template ghas-compliance decyjphr/ghas-compliance --values myvalues.yaml
+```
+
+Passing custom values for APP_ID, PRIVATE_KEY, WEBHOOK_SECRET using `--set`
+```bash
+helm template ghas-compliance decyjphr/ghas-compliance --set appEnv.APP_ID="\"210920\"" --set appEnv.PRIVATE_KEY="TFM...==" --set appEnv.WEBHOOK_SECRET="ZjZlYTFjN...=="
+```
+
 ## Contributing
 
 We'd love to have you contribute! Please refer to our [contribution guidelines](https://github.com/decyjphr-org/charts/blob/main/CONTRIBUTING.md) for details.
