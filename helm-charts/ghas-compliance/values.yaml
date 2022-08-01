@@ -40,11 +40,6 @@ service:
   type: ClusterIP
   port: 80
 
-appEnv:
-  APP_ID: 
-  PRIVATE_KEY: 
-  WEBHOOK_SECRET: 
-
 ingress:
   enabled: false
   className: ""

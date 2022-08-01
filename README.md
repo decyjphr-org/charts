@@ -8,11 +8,13 @@
 Once Helm is set up properly, add the repo as follows:
 
 ```bash
-$ helm repo add decyjphr https://charts.perfexel.io
+$ helm repo add decyjphr https://decyjphr-org.github.io/charts/
 $ helm install ghas-compliance decyjphr/ghas-compliance
 ```
 
-You can then run `helm search repo decyjphr` to see the charts.
+You can then run `helm search repo ghas-compliance` to see the charts.
+
+You can then run `helm show values decyjphr/ghas-compliance` to see the values.
 
 Chart documentation is available in [decyjphr directory](https://github.com/decyjphr-org/ghas-compliance/).
 
