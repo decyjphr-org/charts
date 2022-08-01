@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-env
+type: Opaque
+data:
+  {{ if .Files.Get ".env" }}
+  {{   range .Files.Lines ".env" }}
+  {{     if . }}
+  {{       $parts := regexSplit "=" . 2 }}
+  {{       index $parts 0  }}: {{ index $parts 1 | b64enc }}
+  {{     end }}
+  {{   end }}
+  {{ else }}
+  {{- required "A valid appEnv is required!" .Values.appEnv }}
+  {{- required "A valid appEnv.APP_ID is required!" .Values.appEnv.APP_ID }}
+  {{- required "A valid appEnv.PRIVATE_KEY is required!" .Values.appEnv.PRIVATE_KEY }}
+  {{   if .Values.appEnv }}
+  {{     range $key, $value := .Values.appEnv }}
+  {{       $key }}: {{ $value | b64enc }}
+  {{     end }}
+  {{   end }}
+  {{ end }}

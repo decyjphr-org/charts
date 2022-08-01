@@ -1,0 +1,26 @@
+apiVersion: v1
+entries:
+  ghas-compliance:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2022-07-31T22:32:35.533658-04:00"
+    description: A GitHub App built with [Probot](https://github.com/probot/probot)
+      for enforcing GHAS compliance policies.
+    digest: 0840e62c43cada49a703b19da95f8b9a7bb1406a338785740d09de7a47294fee
+    home: https://github.com/github/ghas-compliance
+    icon: https://wile.example.com/anvil.svg
+    keywords:
+    - github
+    - ghas
+    - security
+    maintainers:
+    - email: decyjphr@github.com
+      name: Yadhav Jayaraman
+    name: ghas-compliance
+    sources:
+    - https://github.com/decyjphr-org/ghas-compliance
+    type: application
+    urls:
+    - ghas-compliance-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-07-31T22:32:35.532622-04:00"
