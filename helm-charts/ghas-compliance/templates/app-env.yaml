@@ -7,8 +7,6 @@ data:
   {{- required "A valid appEnv is required!" .Values.appEnv }}
   {{- required "A valid appEnv.APP_ID is required!" .Values.appEnv.APP_ID }}
   {{- required "A valid appEnv.PRIVATE_KEY is required!" .Values.appEnv.PRIVATE_KEY }}
-  {{-   if .Values.appEnv }}
   APP_ID: {{ .Values.appEnv.APP_ID | b64enc }}
   PRIVATE_KEY: {{ .Values.appEnv.PRIVATE_KEY | b64enc }}
   WEBHOOK_SECRET: {{ .Values.appEnv.WEBHOOK_SECRET | b64enc }}
-  {{-   end }}
