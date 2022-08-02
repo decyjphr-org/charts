@@ -1,6 +1,7 @@
-# charts
-
+# Charts
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+Helm Charts repository for decyjphr-org.
 ## Usage
 
 [Helm](https://helm.sh/) must be installed to use the charts. Please refer to Helm's [documentation](https://helm.sh/docs/) to get started.
