@@ -68,6 +68,11 @@ resources: {}
   #   cpu: 100m
   #   memory: 128Mi
 
+appEnv:
+  APP_ID: 
+  PRIVATE_KEY: 
+  WEBHOOK_SECRET: 
+  
 autoscaling:
   enabled: false
   minReplicas: 1
