@@ -1,0 +1,9 @@
+ {{- $fullName := include "safe-settings.fullname" . -}}
+ apiVersion: v1
+ kind: ConfigMap
+ metadata:
+   name: deployment-config
+   namespace: default
+ data:
+   deployment-config.yaml: |
+       {{- required "A valid deploymentConfig is required!" .Values.deploymentConfig }}

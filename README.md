@@ -10,14 +10,11 @@ Once Helm is set up properly, add the repo as follows:
 
 ```bash
 $ helm repo add decyjphr https://decyjphr-org.github.io/charts/
-$ helm install ghas-compliance decyjphr/ghas-compliance
 ```
 
-You can then run `helm search repo ghas-compliance` to see the charts.
+Run `helm search repo ghas-compliance` to see the charts.
 
-You can then run `helm show values decyjphr/ghas-compliance` to see the values.
-
-Chart documentation is available in [decyjphr directory](https://github.com/decyjphr-org/ghas-compliance/).
+Run `helm show values decyjphr/ghas-compliance` to see the values.
 
 Install template with values for APP_ID, PRIVATE_KEY, WEBHOOK_SECRET using `--values` (Preferred approach)
 ```bash
@@ -26,13 +23,18 @@ helm install ghas-compliance decyjphr/ghas-compliance --values myvalues.yaml
 
 Install template with values for APP_ID, PRIVATE_KEY, WEBHOOK_SECRET using `--set`
 ```bash
-helm install ghas-compliance decyjphr/ghas-compliance --set appEnv.APP_ID="\"210920\"" --set appEnv.PRIVATE_KEY="TFM...==" --set appEnv.WEBHOOK_SECRET="ZjZlYTFjN...=="
+helm install ghas-compliance decyjphr/ghas-compliance --set appEnv.APP_ID="\"000000\"" --set appEnv.PRIVATE_KEY="TFM...==" --set appEnv.WEBHOOK_SECRET="ZjZlYTFjN...=="
 ```
 
 Generate Kubernetes YAMLs
 ```bash
 helm template ghas-compliance decyjphr/ghas-compliance --values myvalues.yaml
 ```
+
+Chart documentation is available in [decyjphr charts repo](https://github.com/decyjphr-org/charts/).
+
+*See [helm repo](https://helm.sh/docs/helm/helm_repo/) for command documentation.*
+
 
 ## Contributing
 
