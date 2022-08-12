@@ -3,10 +3,10 @@ entries:
   ghas-compliance:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2022-07-31T22:32:35.533658-04:00"
+    created: "2022-08-12T09:46:28.067558-04:00"
     description: A GitHub App built with [Probot](https://github.com/probot/probot)
       for enforcing GHAS compliance policies.
-    digest: 0840e62c43cada49a703b19da95f8b9a7bb1406a338785740d09de7a47294fee
+    digest: 3693b93a39bd0449eab501889d7f81662a930d3db8a43c149498088c2e8b497d
     home: https://github.com/github/ghas-compliance
     icon: https://wile.example.com/anvil.svg
     keywords:
@@ -23,4 +23,27 @@ entries:
     urls:
     - ghas-compliance-0.1.0.tgz
     version: 0.1.0
-generated: "2022-07-31T22:32:35.532622-04:00"
+  safe-settings:
+  - apiVersion: v2
+    appVersion: 2.0.0
+    created: "2022-08-12T09:46:28.06836-04:00"
+    description: A GitHub App built with [Probot](https://github.com/probot/probot)
+      to manage policy-as-code and apply repository settings to repositories across
+      an organization.
+    digest: 1cf8e243470cdbcf3b6fb60b56677dbf10945477aa8f54c89cfefe9daf36a02a
+    home: https://github.com/github/safe-settings
+    icon: https://wile.example.com/anvil.svg
+    keywords:
+    - github
+    - policy
+    maintainers:
+    - email: decyjphr@github.com
+      name: Yadhav Jayaraman
+    name: safe-settings
+    sources:
+    - https://github.com/github/safe-settings
+    type: application
+    urls:
+    - safe-settings-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-08-12T09:46:28.066669-04:00"
