@@ -1,42 +1,8 @@
- {{- $fullName := include "safe-settings.fullname" . -}}
- apiVersion: v1
- kind: ConfigMap
- metadata:
-   name: deployment-config
-   namespace: default
- data:
-   deployment-config.yaml: |
-     restrictedRepos:
-       exclude:
-         - safe-settings
-         - admin
-         - .github
-     
-     configvalidators:
-       - plugin: repository
-         error: |
-           `Repo name cannot start with 'test' `
-         script:
-           return !baseconfig.name.startsWith('stest')
-       - plugin: collaborators
-         error: |
-           `Admin cannot be assigned to collaborators`
-         script: |
-           console.log(`baseConfig ${JSON.stringify(baseconfig)}`)
-           return baseconfig.permission != 'admin'
-     overridevalidators:
-       - plugin: branches
-         error: |
-           `Branch protection required_approving_review_count cannot be overidden to a lower value`
-         script: |
-           console.log(`baseConfig ${JSON.stringify(baseconfig)}`)
-           console.log(`overrideConfig ${JSON.stringify(overrideconfig)}`)
-           if (baseconfig.protection.required_pull_request_reviews.required_approving_review_count && overrideconfig.protection.required_pull_request_reviews.required_approving_review_count ) {
-             return overrideconfig.protection.required_pull_request_reviews.required_approving_review_count >= baseconfig.protection.required_pull_request_reviews.required_approving_review_count
-           }
-           return true
-       - plugin: labels
-         error: |
-           Some error
-         script: |
-           return true
+{{- $fullName := include "safe-settings.fullname" . -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: deployment-config
+data:
+  deployment-config.yml: |
+    {{- required "A valid appEnv.APP_ID is required!" .Values.deploymentConfig | toYaml | nindent 4 }}
