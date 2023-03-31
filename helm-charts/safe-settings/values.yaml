@@ -82,9 +82,9 @@ tolerations: []
 affinity: {}
 
 appEnv:
-  APP_ID: 
-  PRIVATE_KEY: 
-  WEBHOOK_SECRET: 
+  APP_ID:
+  PRIVATE_KEY:
+  WEBHOOK_SECRET:
 
 deploymentConfig:
   restrictedRepos:
