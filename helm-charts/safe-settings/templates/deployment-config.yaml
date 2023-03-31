@@ -4,5 +4,5 @@ kind: ConfigMap
 metadata:
   name: deployment-config
 data:
-  deployment-config.yml: |
+  deployment-settings.yml: |
     {{- required "A valid appEnv.APP_ID is required!" .Values.deploymentConfig | toYaml | nindent 4 }}

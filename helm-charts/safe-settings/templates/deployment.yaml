@@ -38,12 +38,12 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
-          - secretRef: 
+          - secretRef:
               name: app-env
           volumeMounts:
           - name: config-volume
             mountPath: {{ .Values.appEnv.DEPLOYMENT_CONFIG_FILE }}
-            subPath: deployment-config.yaml
+            subPath: deployment-settings.yml
           ports:
             - name: http
               containerPort: 3000

@@ -86,18 +86,14 @@ appEnv:
   PRIVATE_KEY: 
   WEBHOOK_SECRET: 
 
-deploymentConfig: 
+deploymentConfig:
   restrictedRepos:
-    exclude:
-      - safe-settings
-      - admin
-      - .github  
+    # You can exclude certain repos from safe-settings processing
+    #  If no file is specified, then the following repositories - 'admin', '.github', 'safe-settings' are exempted by default
+    exclude: ['^admin$', '^\.github$', '^safe-settings$', '.*-test']
+    # Alternatively you can only include certain repos
+    include: ['^test$']
   configvalidators:
-    - plugin: repository
-      error: |
-        `Repo name cannot start with 'test' `
-      script:
-        return !baseconfig.name.startsWith('stest')
     - plugin: collaborators
       error: |
         `Admin cannot be assigned to collaborators`
