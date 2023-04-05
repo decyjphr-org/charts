@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: app-env
+  name: {{ include "safe-settings.fullname" . }}-app-env
 type: Opaque
 data:
   APP_ID: {{ required "A valid appEnv.APP_ID is required!" .Values.appEnv.APP_ID | b64enc }}
