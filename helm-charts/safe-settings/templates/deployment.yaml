@@ -31,6 +31,11 @@ spec:
         - name: config-volume
           configMap:
             name: deployment-config
+        {{- if and .Values.appEnv.NODE_EXTRA_CA_CERTS .Values.nodeExtraCaCerts }}
+        - name: cacert-volume
+          configMap:
+            name: {{ include "safe-settings.fullname" . }}-trusted-cacerts
+        {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -38,12 +43,17 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
-          - secretRef: 
+          - secretRef:
               name: app-env
           volumeMounts:
           - name: config-volume
             mountPath: {{ .Values.appEnv.DEPLOYMENT_CONFIG_FILE }}
             subPath: deployment-config.yaml
+          {{- if and .Values.appEnv.NODE_EXTRA_CA_CERTS .Values.nodeExtraCaCerts }}
+          - name: cacert-volume
+            mountPath: "/opt/safe-settings/{{ .Values.appEnv.NODE_EXTRA_CA_CERTS }}"
+            subPath: {{ .Values.appEnv.NODE_EXTRA_CA_CERTS }}
+          {{- end }}
           ports:
             - name: http
               containerPort: 3000

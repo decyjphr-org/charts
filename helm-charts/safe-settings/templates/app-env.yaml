@@ -9,3 +9,4 @@ data:
   PRIVATE_KEY: {{ required "A valid appEnv.PRIVATE_KEY is required!" .Values.appEnv.PRIVATE_KEY | b64enc }}
   WEBHOOK_SECRET: {{ required "A valid appEnv.WEBHOOK_SECRET is required!" .Values.appEnv.WEBHOOK_SECRET | b64enc }}
   DEPLOYMENT_CONFIG_FILE: {{ required "A valid appEnv.DEPLOYMENT_CONFIG_FILE is required!" .Values.appEnv.DEPLOYMENT_CONFIG_FILE | b64enc }}
+  NODE_EXTRA_CA_CERTS: {{ .Values.appEnv.NODE_EXTRA_CA_CERTS | b64enc }}
