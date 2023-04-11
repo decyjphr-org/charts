@@ -1,0 +1,10 @@
+{{- if and .Values.appEnv.NODE_EXTRA_CA_CERTS .Values.nodeExtraCaCerts }}
+{{- $fullName := include "safe-settings.fullname" . -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "safe-settings.fullname" . }}-trusted-cacerts
+data:
+  {{ .Values.appEnv.NODE_EXTRA_CA_CERTS }}:
+    {{- .Values.nodeExtraCaCerts | toYaml | nindent 4 }}
+{{- end }}
