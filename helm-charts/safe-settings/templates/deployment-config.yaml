@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: deployment-config
+  name: {{ include "safe-settings.fullname" . }}-deployment-config
 data:
-  deployment-config.yml: |
+  {{ .Values.appEnv.DEPLOYMENT_CONFIG_FILE | default "deployment-settings.yml" }}: |
     {{- required "A valid appEnv.APP_ID is required!" .Values.deploymentConfig | toYaml | nindent 4 }}

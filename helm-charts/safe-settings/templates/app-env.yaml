@@ -2,11 +2,19 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: app-env
+  name: {{ include "safe-settings.fullname" . }}-app-env
 type: Opaque
 data:
-  APP_ID: {{ required "A valid appEnv.APP_ID is required!" .Values.appEnv.APP_ID | b64enc }}
+  APP_ID: {{ required "A valid appEnv.APP_ID is required!" .Values.appEnv.APP_ID | toString | b64enc }}
   PRIVATE_KEY: {{ required "A valid appEnv.PRIVATE_KEY is required!" .Values.appEnv.PRIVATE_KEY | b64enc }}
   WEBHOOK_SECRET: {{ required "A valid appEnv.WEBHOOK_SECRET is required!" .Values.appEnv.WEBHOOK_SECRET | b64enc }}
-  DEPLOYMENT_CONFIG_FILE: {{ required "A valid appEnv.DEPLOYMENT_CONFIG_FILE is required!" .Values.appEnv.DEPLOYMENT_CONFIG_FILE | b64enc }}
+  {{- if .Values.appEnv.DEPLOYMENT_CONFIG_FILE }}
+  DEPLOYMENT_CONFIG_FILE: {{ .Values.appEnv.DEPLOYMENT_CONFIG_FILE | b64enc }}
+  {{- end }}
+  ADMIN_REPO: {{ .Values.appEnv.ADMIN_REPO | default "admin" | b64enc }}
+  SETTINGS_FILE_PATH: {{ .Values.appEnv.SETTINGS_FILE_PATH | default "settings.yml" | b64enc }}
+  {{- if .Values.appEnv.CRON }}
+  CRON: {{ .Values.appEnv.CRON | b64enc }}
+  {{- end }}
+  LOG_LEVEL: {{ .Values.appEnv.LOG_LEVEL | default "info" | b64enc }}
   NODE_EXTRA_CA_CERTS: {{ .Values.appEnv.NODE_EXTRA_CA_CERTS | b64enc }}

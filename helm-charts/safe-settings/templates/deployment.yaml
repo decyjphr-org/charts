@@ -30,7 +30,7 @@ spec:
       volumes:
         - name: config-volume
           configMap:
-            name: deployment-config
+            name: {{ include "safe-settings.fullname" . }}-deployment-config
         {{- if and .Values.appEnv.NODE_EXTRA_CA_CERTS .Values.nodeExtraCaCerts }}
         - name: cacert-volume
           configMap:
@@ -44,11 +44,11 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
           - secretRef:
-              name: app-env
+              name: {{ include "safe-settings.fullname" . }}-app-env
           volumeMounts:
           - name: config-volume
-            mountPath: {{ .Values.appEnv.DEPLOYMENT_CONFIG_FILE }}
-            subPath: deployment-config.yaml
+            mountPath: {{ "/opt/safe-settings/" }}{{ .Values.appEnv.DEPLOYMENT_CONFIG_FILE | default "deployment-settings.yml" }}
+            subPath: {{ .Values.appEnv.DEPLOYMENT_CONFIG_FILE | default "deployment-settings.yml" }}
           {{- if and .Values.appEnv.NODE_EXTRA_CA_CERTS .Values.nodeExtraCaCerts }}
           - name: cacert-volume
             mountPath: "/opt/safe-settings/{{ .Values.appEnv.NODE_EXTRA_CA_CERTS }}"
