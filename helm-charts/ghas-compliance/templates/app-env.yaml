@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: Secret
-metadata:
-  name: app-env
-type: Opaque
-data:
-  APP_ID: {{ required "A valid appEnv.APP_ID is required!" .Values.appEnv.APP_ID | b64enc }}
-  PRIVATE_KEY: {{ required "A valid appEnv.PRIVATE_KEY is required!" .Values.appEnv.PRIVATE_KEY | b64enc }}
-  WEBHOOK_SECRET: {{ required "A valid appEnv.WEBHOOK_SECRET is required!" .Values.appEnv.WEBHOOK_SECRET | b64enc }}
