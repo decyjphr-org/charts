@@ -30,7 +30,7 @@ spec:
       volumes:
         - name: config-volume
           configMap:
-            name: deployment-config
+            name: {{ include "safe-settings.fullname" . }}-deployment-config
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -39,7 +39,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
           - secretRef:
-              name: app-env
+              name: {{ include "safe-settings.fullname" . }}-app-env
           volumeMounts:
           - name: config-volume
             mountPath: {{ "/opt/safe-settings/" }}{{ .Values.appEnv.DEPLOYMENT_CONFIG_FILE | default "deployment-settings.yml" }}
