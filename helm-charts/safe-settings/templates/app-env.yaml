@@ -17,3 +17,4 @@ data:
   CRON: {{ .Values.appEnv.CRON | b64enc }}
   {{- end }}
   LOG_LEVEL: {{ .Values.appEnv.LOG_LEVEL | default "info" | b64enc }}
+  NODE_EXTRA_CA_CERTS: {{ .Values.appEnv.NODE_EXTRA_CA_CERTS | b64enc }}
